@@ -307,6 +307,8 @@ static int uclogic_raw_event(struct hid_device *hdev,
 			/* Place pressure bytes */
 			data[8] = pressure_low_byte;
 			data[9] = pressure_high_byte;
+			/* Invert Y tilt */
+			data[11] = 0 - data[11];
 		}
 		/* If we need to emulate in-range detection */
 		if (params->pen.inrange == UCLOGIC_PARAMS_PEN_INRANGE_NONE) {
